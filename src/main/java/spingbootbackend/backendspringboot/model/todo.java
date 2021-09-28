@@ -1,7 +1,7 @@
 package spingbootbackend.backendspringboot.model;
 
 import java.sql.Timestamp;
-
+import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +22,7 @@ public class todo{
     @Column(name="completed")
     private Boolean completed;
 
+    @CreationTimestamp
     @Column(name="date_added")
     private Timestamp date_added;
 
