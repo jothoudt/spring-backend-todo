@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.DynamicUpdate;
 
+@DynamicUpdate
 @Entity
 @Table(name="todo")
 public class todo{
@@ -16,14 +18,14 @@ public class todo{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="task")
+    @Column(name="task", updatable=false)
     private String task;
 
-    @Column(name="completed")
-    private Boolean completed;
+    @Column(name="completed", columnDefinition = "boolean default false")
+    private Boolean completed=false;
 
     @CreationTimestamp
-    @Column(name="date_added")
+    @Column(name="date_added", updatable=false)
     private Timestamp date_added;
 
     @Column(name="date_completed")
@@ -55,8 +57,8 @@ public class todo{
     public Boolean getCompleted(){
         return completed;
     }
-    public Boolean setCompleted(Boolean completed){
-        return true;
+    public void setCompleted(){
+        this.completed= true; 
     }
     public Timestamp getDate_added(){
         return date_added;
@@ -64,7 +66,7 @@ public class todo{
     public Timestamp setDate_added(){
         return date_added;
     }
-    public String getDate_completed(String date_completed){
+    public String getDate_completed(){
         return date_completed;
     }
     public void setDate_completed(String date_completed){

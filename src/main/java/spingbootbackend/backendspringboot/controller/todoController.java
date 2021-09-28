@@ -52,8 +52,8 @@ public class todoController {
         LocalDate date = LocalDate.now();
         String formattedDate = date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
         String date_completed= formattedDate;
-        Boolean completed = true;
-		todo.setCompleted(completed);
+        Boolean completed= true;
+		todo.setCompleted();
 		todo.setDate_completed(date_completed);
 		
 		todo updatedTodo = todoRepository.save(todo);
