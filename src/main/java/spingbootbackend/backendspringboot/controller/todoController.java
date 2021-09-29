@@ -31,7 +31,7 @@ public class todoController {
 	@Autowired
 	private todoRepository todoRepository;
 	
-	// get all taska
+	// get all tasks
 	@GetMapping("/tasks")
 	public List<todo> gettasks(){
 		return todoRepository.findAll();
@@ -60,7 +60,7 @@ public class todoController {
 		return ResponseEntity.ok(updatedTodo);
 	}
 	
-	// delete employee rest api
+	// delete task rest api
 	@DeleteMapping("/tasks/{id}")
 	public ResponseEntity<Map<String, Boolean>> deleteTask(@PathVariable Long id){
 		todo todo = todoRepository.findById(id)
